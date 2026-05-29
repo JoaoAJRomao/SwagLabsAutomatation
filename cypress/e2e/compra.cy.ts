@@ -36,6 +36,16 @@ describe('Fluxo de Compra - SauceDemo', () => {
     cy.url().should('include', '/inventory');
   });
 
+  it('deve adicionar 2 itens ao carrinho, ir para checkout e remover o primeiro, validando quantidade', () => {
+    checkoutPage.adicionarDoisItensAoCarrinho();
+    checkoutPage.validarQuantidadeCarrinho('2');
+
+    checkoutPage.acessarCarrinho();
+    checkoutPage.removerPrimeiroItemDoCarrinhoTelaCart();
+    
+    checkoutPage.validarQuantidadeCarrinho('1');
+  });
+
   it('deve exibir as 4 opções de ordenação disponíveis no dropdown', () => {
     const opcoesEsperadas: SortOption[] = [
       'Name (A to Z)',

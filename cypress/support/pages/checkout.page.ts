@@ -32,6 +32,17 @@ export class CheckoutPage {
     return this;
   }
 
+  adicionarDoisItensAoCarrinho(): this {
+    cy.contains('button', 'Add to cart').click();
+    cy.contains('button', 'Add to cart').click();
+    return this;
+  }
+
+  removerPrimeiroItemDoCarrinhoTelaCart(): this {
+    cy.contains('button', 'Remove').first().click();
+    return this;
+  }
+
   acessarCarrinho(): this {
     cy.get(this.selectors.cartLink).click();
     return this;

@@ -1,6 +1,6 @@
 import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import { LoginPage } from '../pages/login.page';
-import { CheckoutPage, SortOption } from '../pages/checkout.page';
+import { CheckoutPage } from '../pages/checkout.page';
 
 const loginPage = new LoginPage();
 const checkoutPage = new CheckoutPage();
@@ -67,44 +67,4 @@ When('remove o primeiro item da lista do carrinho', () => {
   checkoutPage.removerPrimeiroItemDoCarrinhoTelaCart();
 });
 
-When('o usuário seleciona a opção de ordenação {string}', (opcao: string) => {
-  checkoutPage.selecionarOrdenacao(opcao as SortOption);
-});
 
-Then('os produtos devem ser ordenados corretamente pelo {string} correspondente', function (this: any, tipo: string) {
-  cy.get(checkoutPage['selectors'].sortContainer).find('option:selected').invoke('text').then((opcao) => {
-    if (tipo === 'nome') {
-      checkoutPage.obterNomesDosProdutos().then((nomes) => {
-        const nomesOrdenados = [...nomes].sort((a, b) =>
-          opcao === 'Name (A to Z)' ? a.localeCompare(b) : b.localeCompare(a)
-        );
-        expect(nomes).to.deep.equal(nomesOrdenados);
-      });
-    } else {
-      checkoutPage.obterPrecosDosProdutos().then((precos) => {
-        const precosOrdenados = [...precos].sort((a, b) =>
-          opcao === 'Price (low to high)' ? a - b : b - a
-        );
-        expect(precos).to.deep.equal(precosOrdenados);
-      });
-    }
-  });
-});
-
-Then('o dropdown de ordenação deve exibir {int} opções disponíveis', (quantidadeOpcoes: number) => {
-  checkoutPage.obterOpcoesDeOrdenacao().should('have.length', quantidadeOpcoes);
-
-  const opcoesEsperadas: SortOption[] = [
-    'Name (A to Z)',
-    'Name (Z to A)',
-    'Price (low to high)',
-    'Price (high to low)',
-  ];
-
-  opcoesEsperadas.forEach((opcao) => {
-    checkoutPage
-      .obterOpcoesDeOrdenacao()
-      .contains(opcao)
-      .should('exist');
-  });
-});

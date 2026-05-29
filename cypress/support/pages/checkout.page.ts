@@ -1,9 +1,3 @@
-export type SortOption =
-  | 'Name (A to Z)'
-  | 'Name (Z to A)'
-  | 'Price (low to high)'
-  | 'Price (high to low)';
-
 export class CheckoutPage {
   private readonly selectors = {
     addToCartBackpack: '#add-to-cart-sauce-labs-backpack',
@@ -16,7 +10,6 @@ export class CheckoutPage {
     continueButton: '#continue',
     finishButton: '#finish',
     completeHeader: '[data-test="complete-header"]',
-    sortContainer: '[data-test="product-sort-container"]',
     productPrice: '.inventory_item_price',
     productName: '.inventory_item_name',
     inventoryDetailsName: '[data-test="inventory-item-name"], .inventory_details_name',
@@ -78,23 +71,6 @@ export class CheckoutPage {
     return cy.get(this.selectors.completeHeader);
   }
 
-  obterOpcoesDeOrdenacao(): Cypress.Chainable<JQuery<HTMLElement>> {
-    return cy.get(this.selectors.sortContainer).find('option');
-  }
-
-  selecionarOrdenacao(opcao: SortOption): this {
-    cy.get(this.selectors.sortContainer).select(opcao);
-    return this;
-  }
-
-  obterPrecosDosProdutos(): Cypress.Chainable<number[]> {
-    return cy.get(this.selectors.productPrice).then(($prices) => {
-      return Array.from($prices).map((el) =>
-        parseFloat(el.innerText.replace('$', ''))
-      );
-    });
-  }
-
   clicarPrimeiroProduto(): this {
     cy.get(this.selectors.productName).first().click();
     return this;
@@ -126,12 +102,6 @@ export class CheckoutPage {
   clicarVoltarParaProdutos(): this {
     cy.get(this.selectors.backToProductsButton).click();
     return this;
-  }
-
-  obterNomesDosProdutos(): Cypress.Chainable<string[]> {
-    return cy.get(this.selectors.productName).then(($names) => {
-      return Array.from($names).map((el) => el.innerText.trim());
-    });
   }
 
   realizarCompraCompleta(firstName: string, lastName: string, postalCode: string): void {

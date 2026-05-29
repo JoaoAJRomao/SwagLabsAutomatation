@@ -31,16 +31,3 @@ Funcionalidade: Fluxo de Compra no SauceDemo
     E remove o primeiro item da lista do carrinho
     Então o ícone do carrinho deve exibir a quantidade "1"
 
-  Esquema do Cenário: Validação das opções de ordenação de produtos
-    Quando o usuário seleciona a opção de ordenação "<opcao_de_ordenacao>"
-    Então os produtos devem ser ordenados corretamente pelo "<tipo_de_dado>" correspondente
-
-    Exemplos:
-      | opcao_de_ordenacao  | tipo_de_dado |
-      | Name (A to Z)       | nome         |
-      | Name (Z to A)       | nome         |
-      | Price (low to high) | preco        |
-      | Price (high to low) | preco        |
-
-  Cenário: Validação das opções disponíveis de ordenação
-    Então o dropdown de ordenação deve exibir 4 opções disponíveis

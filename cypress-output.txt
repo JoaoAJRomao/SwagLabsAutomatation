@@ -1,0 +1,73 @@
+
+================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        15.16.0                                                                        │
+  │ Browser:        Electron 138 (headless)                                                        │
+  │ Node Version:   v20.9.0 (/home/tupi/.nvm/versions/node/v20.9.0/bin/node)                       │
+  │ Specs:          1 found (compra.feature)                                                       │
+  │ Searched:       **/*.feature                                                                   │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  compra.feature                                                                  (1 of 1)
+
+Oops...we found an error preparing this test file:
+
+  > cypress/e2e/compra.feature
+
+The error was:
+
+Error: Build failed with 1 error:
+node_modules/@badeball/cypress-cucumber-preprocessor/dist/template.js:32:14: ERROR: [plugin: feature] (1:1): expected: #EOF, #Language, #TagLine, #FeatureLine, #Comment, #Empty, got 'Funcionalidade: Fluxo de Compra no SauceDemo'
+    at failureErrorWithLog (/home/tupi/Documentos/projetos/swagLabsAutomatation/node_modules/esbuild/lib/main.js:1748:15)
+    at /home/tupi/Documentos/projetos/swagLabsAutomatation/node_modules/esbuild/lib/main.js:1207:25
+    at runOnEndCallbacks (/home/tupi/Documentos/projetos/swagLabsAutomatation/node_modules/esbuild/lib/main.js:1588:45)
+    at buildResponseToResult (/home/tupi/Documentos/projetos/swagLabsAutomatation/node_modules/esbuild/lib/main.js:1205:7)
+    at /home/tupi/Documentos/projetos/swagLabsAutomatation/node_modules/esbuild/lib/main.js:1232:16
+    at responseCallbacks.<computed> (/home/tupi/Documentos/projetos/swagLabsAutomatation/node_modules/esbuild/lib/main.js:884:9)
+    at handleIncomingPacket (/home/tupi/Documentos/projetos/swagLabsAutomatation/node_modules/esbuild/lib/main.js:939:12)
+    at Socket.readFromStdout (/home/tupi/Documentos/projetos/swagLabsAutomatation/node_modules/esbuild/lib/main.js:862:7)
+    at Socket.emit (node:events:514:28)
+    at addChunk (node:internal/streams/readable:376:12)
+    at readableAddChunk (node:internal/streams/readable:349:9)
+    at Readable.push (node:internal/streams/readable:286:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+
+This occurred while Cypress was compiling and bundling your test code. This is usually caused by:
+
+- A missing file or dependency
+- A syntax error in the file or one of its dependencies
+
+Fix the error in your code and re-run your tests.
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        0                                                                                │
+  │ Passing:      0                                                                                │
+  │ Failing:      1                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  0                                                                                │
+  │ Video:        false                                                                            │
+  │ Duration:     0 seconds                                                                        │
+  │ Spec Ran:     compra.feature                                                                   │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✖  compra.feature                             0ms        -        -        1        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ✖  1 of 1 failed (100%)                       0ms        -        -        1        -        -  
+

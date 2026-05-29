@@ -1,7 +1,14 @@
 {
+  "scripts": {
+    "test": "cypress run",
+    "test:compra": "cypress run --spec cypress/e2e/compra.feature"
+  },
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "@types/node": "^25.9.1",
     "cypress": "^15.16.0",
+    "esbuild": "^0.28.0",
     "typescript": "^6.0.3"
   }
 }

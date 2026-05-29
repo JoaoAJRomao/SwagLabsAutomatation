@@ -15,3 +15,11 @@ Funcionalidade: Login no SauceDemo
   Cenário: Login com senha inválida
     Quando realizo login com "standard_user" e "senha_errada"
     Então o sistema deve exibir a mensagem de erro "Epic sadface: Username and password do not match any user in this service"
+
+  Cenário: Login sem preencher campos
+    Quando tento acessar sem preencher campos
+    Então o sistema deve exibir a mensagem de erro "Epic sadface: Username is required"
+
+  Cenário: Login informando apenas o username
+    Quando preencho apenas o usuário com "standart_user" e pressiono login
+    Então o sistema deve exibir a mensagem de erro "Epic sadface: Password is required"

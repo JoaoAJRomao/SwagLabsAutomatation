@@ -19,6 +19,14 @@ Then('a lista de produtos é exibida', () => {
   cy.get('.inventory_list').should('be.visible');
 });
 
+When('tento acessar sem preencher campos', () => {
+  loginPage.clicarEntrar();
+});
+
+When('preencho apenas o usuário com {string} e pressiono login', (username: string) => {
+  loginPage.preencherUser(username).clicarEntrar();
+});
+
 Then('o sistema deve exibir a mensagem de erro {string}', (mensagem: string) => {
   loginPage
     .obterMensagemDeErro()

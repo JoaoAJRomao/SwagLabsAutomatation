@@ -10,7 +10,6 @@ export class CheckoutPage {
     continueButton: '#continue',
     finishButton: '#finish',
     completeHeader: '[data-test="complete-header"]',
-    productPrice: '.inventory_item_price',
     productName: '.inventory_item_name',
     inventoryDetailsName: '[data-test="inventory-item-name"], .inventory_details_name',
     inventoryDetailsDesc: '[data-test="inventory-item-desc"], .inventory_details_desc',

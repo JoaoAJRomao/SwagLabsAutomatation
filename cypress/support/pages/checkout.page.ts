@@ -19,6 +19,12 @@ export class CheckoutPage {
     sortContainer: '[data-test="product-sort-container"]',
     productPrice: '.inventory_item_price',
     productName: '.inventory_item_name',
+    inventoryDetailsName: '[data-test="inventory-item-name"], .inventory_details_name',
+    inventoryDetailsDesc: '[data-test="inventory-item-desc"], .inventory_details_desc',
+    inventoryDetailsPrice: '[data-test="inventory-item-price"], .inventory_details_price',
+    addToCartButton: '#add-to-cart',
+    removeButton: '#remove',
+    backToProductsButton: '#back-to-products',
   } as const;
 
   adicionarBackpackAoCarrinho(): this {
@@ -76,6 +82,39 @@ export class CheckoutPage {
         parseFloat(el.innerText.replace('$', ''))
       );
     });
+  }
+
+  clicarPrimeiroProduto(): this {
+    cy.get(this.selectors.productName).first().click();
+    return this;
+  }
+
+  validarDetalhesDoProduto(): this {
+    cy.get(this.selectors.inventoryDetailsName).should('be.visible');
+    cy.get(this.selectors.inventoryDetailsDesc).should('be.visible');
+    cy.get(this.selectors.inventoryDetailsPrice).should('be.visible');
+    cy.get(this.selectors.addToCartButton).should('be.visible');
+    return this;
+  }
+
+  clicarAdicionarAoCarrinhoDetalhes(): this {
+    cy.get(this.selectors.addToCartButton).click();
+    return this;
+  }
+
+  validarBotaoRemove(): this {
+    cy.get(this.selectors.removeButton).should('be.visible');
+    return this;
+  }
+
+  validarQuantidadeCarrinho(quantidade: string): this {
+    cy.get(this.selectors.cartLink).should('contain.text', quantidade);
+    return this;
+  }
+
+  clicarVoltarParaProdutos(): this {
+    cy.get(this.selectors.backToProductsButton).click();
+    return this;
   }
 
   obterNomesDosProdutos(): Cypress.Chainable<string[]> {

@@ -12,12 +12,28 @@ describe('Fluxo de Compra - SauceDemo', () => {
   });
 
   it('deve adicionar produto ao carrinho, finalizar a compra e exibir confirmação de pedido', () => {
-    checkoutPage.realizarCompraCompleta('John', 'Doe', '12345');
+    checkoutPage.realizarCompraCompleta('João', 'Tester', '12345');
 
     checkoutPage
       .obterConfirmacaoDePedido()
       .should('be.visible')
       .and('contain.text', 'Thank you for your order!');
+  });
+
+  it('deve exibir detalhes do produto ao clicar no primeiro item', () => {
+    checkoutPage.clicarPrimeiroProduto();
+    checkoutPage.validarDetalhesDoProduto();
+  });
+
+  it('deve adicionar item ao carrinho pela tela de detalhes e voltar para os produtos', () => {
+    checkoutPage.clicarPrimeiroProduto();
+
+    checkoutPage.clicarAdicionarAoCarrinhoDetalhes();
+    checkoutPage.validarBotaoRemove();
+    checkoutPage.validarQuantidadeCarrinho('1');
+
+    checkoutPage.clicarVoltarParaProdutos();
+    cy.url().should('include', '/inventory');
   });
 
   it('deve exibir as 4 opções de ordenação disponíveis no dropdown', () => {
